@@ -101,7 +101,22 @@
       </div>
     </div>
   </section>
-
+<!-- Order Section -->
+<section id="order" class="section">
+  <div class="container">
+    <h2 class="section-title text-center">Place Your Order</h2>
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+      <label>Name</label>
+      <input type="text" name="name" required />
+      <label>Phone</label>
+      <input type="tel" name="phone" required />
+      <label>Order Details</label>
+      <textarea name="order" rows="4" required></textarea>
+      <button type="submit" class="btn">Submit Order</button>
+    </form>
+  </div>
+</section>
   <!-- Preloader JavaScript -->
   <script>
     window.addEventListener("load", () => {
@@ -110,7 +125,20 @@
       if (preload) preload.classList.add("loaded");
     });
   </script>
+<!-- WhatsApp Chat Button -->
+<a href="https://wa.me/5195805851" target="_blank" class="whatsapp-button" aria-label="Chat on WhatsApp">
+  Chat with us on WhatsApp
+</a>
 
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p>© 2025 Hamdam Fast Food | Restaurant St, Delicious City, London 5678, UK</p>
+    <p>Open: 9:30 AM – 10:00 PM | Call: +91-9876543210</p>
+  </div>
+</footer>
+
+  
 </body>
 </html>
 
