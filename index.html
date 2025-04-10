@@ -8,18 +8,8 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body.loaded {
-      overflow: auto;
-    }
-    .preload.loaded {
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.6s ease;
-    }
-  </style>
 </head>
 <body>
 
@@ -32,8 +22,8 @@
   <!-- Header -->
   <header class="navbar">
     <div class="container">
-      <h1 class="logo" style="color: var(--primary); font-family: 'Forum';">Hamdam Fast Food</h1>
-      <nav>
+      <h1 class="logo">Hamdam Fast Food</h1>
+      <nav class="desktop-nav">
         <a href="#home">Home</a>
         <a href="#menu">Menu</a>
         <a href="#about">About</a>
@@ -41,10 +31,29 @@
         <a href="#order">Order</a>
         <a href="#booking">Catering</a>
       </nav>
+      <!-- Mobile Nav Toggle -->
+      <button class="nav-open-btn" data-nav-toggler>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Mobile Navbar -->
+  <nav class="mobile-nav" data-navbar>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#order">Order</a>
+    <a href="#booking">Catering</a>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="overlay" data-overlay></div>
+
+  <!-- Hero -->
   <section id="home" class="section text-center">
     <div class="container">
       <h2 class="section-title">Delicious Fast Food, Made Fresh</h2>
@@ -53,10 +62,11 @@
     </div>
   </section>
 
-  <!-- Menu Section -->
+  <!-- Menu -->
   <section id="menu" class="section">
     <div class="container">
       <h2 class="section-title text-center">Our Menu</h2>
+
       <div class="menu-category">
         <h3>Sandwiches</h3>
         <ul>
@@ -65,6 +75,7 @@
           <li>Paneer Melting Sandwich – ₹195</li>
         </ul>
       </div>
+
       <div class="menu-category">
         <h3>Pizzas</h3>
         <ul>
@@ -72,6 +83,7 @@
           <li>Paneer Pizza – ₹160</li>
         </ul>
       </div>
+
       <div class="menu-category">
         <h3>Chinese</h3>
         <ul>
@@ -82,15 +94,15 @@
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about" class="section text-center">
     <div class="container">
       <h2 class="section-title">Our Story</h2>
-      <p>Since 1989, Hamdam Fast Food has been the go-to spot for classic street-style snacks, hot sandwiches, cheesy pizzas, and quality catering in Surat.</p>
+      <p>Since 1989, Hamdam Fast Food has been the go-to spot for street-style snacks, hot sandwiches, cheesy pizzas, and quality catering in Surat.</p>
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Gallery -->
   <section id="gallery" class="section">
     <div class="container">
       <h2 class="section-title text-center">Photo Gallery</h2>
@@ -101,44 +113,67 @@
       </div>
     </div>
   </section>
-<!-- Order Section -->
-<section id="order" class="section">
-  <div class="container">
-    <h2 class="section-title text-center">Place Your Order</h2>
-    <form action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
-      <label>Name</label>
-      <input type="text" name="name" required />
-      <label>Phone</label>
-      <input type="tel" name="phone" required />
-      <label>Order Details</label>
-      <textarea name="order" rows="4" required></textarea>
-      <button type="submit" class="btn">Submit Order</button>
-    </form>
-  </div>
-</section>
-  <!-- Preloader JavaScript -->
-  <script>
-    window.addEventListener("load", () => {
-      const preload = document.querySelector(".preload");
-      document.body.classList.add("loaded");
-      if (preload) preload.classList.add("loaded");
-    });
-  </script>
-<!-- WhatsApp Chat Button -->
-<a href="https://wa.me/5195805851" target="_blank" class="whatsapp-button" aria-label="Chat on WhatsApp">
-  Chat with us on WhatsApp
-</a>
 
-<!-- Footer -->
-<footer>
-  <div class="container text-center">
-    <p>© 2025 Hamdam Fast Food | Restaurant St, Delicious City, London 5678, UK</p>
-    <p>Open: 9:30 AM – 10:00 PM | Call: +91-9876543210</p>
-  </div>
-</footer>
+  <!-- Order -->
+  <section id="order" class="section">
+    <div class="container">
+      <h2 class="section-title text-center">Place Your Order</h2>
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+        <label>Name</label>
+        <input type="text" name="name" required>
+        <label>Phone</label>
+        <input type="tel" name="phone" required>
+        <label>Order Details</label>
+        <textarea name="order" rows="4" required></textarea>
+        <button type="submit" class="btn">Submit Order</button>
+      </form>
+    </div>
+  </section>
 
-  
+  <!-- Booking -->
+  <section id="booking" class="section">
+    <div class="container">
+      <h2 class="section-title text-center">Catering Booking</h2>
+      <form>
+        <label>Name</label>
+        <input type="text" required>
+        <label>Phone</label>
+        <input type="tel" required>
+        <label>Event Type</label>
+        <select>
+          <option>Birthday</option>
+          <option>Wedding</option>
+          <option>Corporate</option>
+        </select>
+        <label>Event Date</label>
+        <input type="date" required>
+        <label>Message</label>
+        <textarea></textarea>
+        <button type="submit" class="btn">Book Now</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>© 2025 Hamdam Fast Food | Restaurant St, Surat, India</p>
+      <p>Open: 9:30 AM – 10:00 PM | Call: +91-9876543210</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/919876543210" class="whatsapp-button" target="_blank">Chat with us on WhatsApp</a>
+
+  <!-- Back to Top Button -->
+  <a href="#home" class="back-top-btn" data-back-top-btn>↑</a>
+
+  <!-- Light/Dark Mode Toggle -->
+  <button class="toggle-btn">Toggle Mode</button>
+
+  <!-- JS -->
+  <script src="script.js" defer></script>
+
 </body>
 </html>
-
