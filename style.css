@@ -122,6 +122,34 @@
 /*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
+footer {
+  background: #000;
+  color: #ffcc00;
+  padding: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+}
+
+.whatsapp-button:hover {
+  background-color: #1ebd5a;
+}
+
+
 
 *,
 *::before,
