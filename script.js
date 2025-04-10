@@ -1,36 +1,47 @@
-// Toggle mobile navbar
-const navToggler = document.querySelectorAll("[data-nav-toggler]");
+// ========== Mobile Navbar Toggle ==========
+const navTogglers = document.querySelectorAll("[data-nav-toggler]");
 const navbar = document.querySelector("[data-navbar]");
 const overlay = document.querySelector("[data-overlay]");
 
-navToggler.forEach(btn => {
+navTogglers.forEach(btn => {
   btn.addEventListener("click", () => {
     navbar.classList.toggle("active");
     overlay.classList.toggle("active");
+    document.body.classList.toggle("nav-active");
   });
 });
 
-// Back to top button
+// ========== Back To Top Button ==========
 const backTopBtn = document.querySelector("[data-back-top-btn]");
 
 window.addEventListener("scroll", () => {
-  window.scrollY > 100
-    ? backTopBtn.classList.add("active")
-    : backTopBtn.classList.remove("active");
+  if (window.scrollY > 100) {
+    backTopBtn.classList.add("active");
+  } else {
+    backTopBtn.classList.remove("active");
+  }
 });
 
-// Preloader
+// ========== Preloader ==========
 window.addEventListener("load", () => {
-  document.querySelector(".preload")?.classList.add("loaded");
+  const preloader = document.querySelector(".preload");
+  preloader?.classList.add("loaded");
   document.body.classList.add("loaded");
 });
 
-// Light/Dark mode toggle
-const toggleBtn = document.createElement("button");
-toggleBtn.classList.add("toggle-btn");
-toggleBtn.textContent = "Toggle Mode";
-document.body.appendChild(toggleBtn);
+// ========== Light/Dark Mode Toggle ==========
+const modeToggleBtn = document.createElement("button");
+modeToggleBtn.classList.add("toggle-btn");
+modeToggleBtn.textContent = "Toggle Mode";
+document.body.appendChild(modeToggleBtn);
 
-toggleBtn.addEventListener("click", () => {
+// Optional: Remember mode with localStorage
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light-mode");
+}
+
+modeToggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("light-mode");
+  const isLight = document.body.classList.contains("light-mode");
+  localStorage.setItem("theme", isLight ? "light" : "dark");
 });
